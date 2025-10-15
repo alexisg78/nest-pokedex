@@ -23,7 +23,11 @@ import { JoiValidationSchema } from './config/joi.validation';
       renderPath: '/',
     }),
 
-    MongooseModule.forRoot( process.env.MONGODB || '' ),
+    MongooseModule.forRoot( process.env.MONGODB_URI!, 
+      {
+        dbName: process.env.MONGODB_DBNAME || 'pokemonsdb'
+      }
+    ),
 
     PokemonModule,
 
